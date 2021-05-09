@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { HomeService } from './home.service';
+import { TrackerService } from './tracker.service';
 
-describe('HomeService', () => {
-  let service: HomeService;
+describe('TrackerService', () => {
+  let service: TrackerService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(HomeService);
+    service = TestBed.inject(TrackerService);
   });
 
   it('should be created', () => {
