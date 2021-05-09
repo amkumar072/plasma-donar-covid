@@ -42,7 +42,7 @@ export class TrackerService {
         });
         this.trackerList.next(trackerList);
         // eslint-disable-next-line no-console
-        console.debug('trackerList :: getTrackerAllInDb ' + JSON.stringify(trackerList));
+        // console.debug('trackerList :: getTrackerAllInDb ' + JSON.stringify(trackerList));
         return trackerList;
       })
     ).toPromise();

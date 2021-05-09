@@ -1,10 +1,15 @@
 <ion-content>
   <ion-grid class="ion-no-padding">
     <ion-row>
-      <ion-col>
-        <ion-searchbar #mySearchBar placeholder="Search By Name or City or State" animated='true'
+      <ion-col size-xs="10" size-sm="11">
+        <ion-searchbar #mySearchBar placeholder="Search By City or State " animated='true'
           (ionChange)="applyFilter($event)">
         </ion-searchbar>
+      </ion-col>
+      <ion-col size-xs="2" size-sm="1">
+        <ion-button (click)="onAdd()">
+          <ion-icon name="add-circle-outline"> </ion-icon>
+        </ion-button>
       </ion-col>
     </ion-row>
     <ion-row>

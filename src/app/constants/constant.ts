@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 export class Constant {
   static readonly stateList: string[] = [
     'Andaman and Nicobar Islands',
@@ -38,4 +39,18 @@ export class Constant {
     'Uttarakhand',
     'West Bengal'
   ];
+
+
+  static readonly AUTH_DATA_STORAGE = 'AuthDataStorage';
+
+
+
+  // AppURL
+
+  static readonly AUTH = '/auth';
+  static readonly HOME = '/home';
+  static readonly URL_TRACKER_ADD = 'home/add';
+  static readonly URL_TRACKER_EDIT = 'home/edit';
+
+
 }

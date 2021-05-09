@@ -1,0 +1,19 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="home()">
+      <ion-button color="secondary">
+        <ion-icon slot="icon-only" name="home-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+
+    <ion-buttons slot="end" *ngIf="isVisibleLogout" (click)="logOut()">
+      <ion-button color="danger">
+        <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Plasma Donar Tracker
+    </ion-title>
+  </ion-toolbar>
+</ion-header>

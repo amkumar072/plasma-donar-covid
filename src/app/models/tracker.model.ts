@@ -2,8 +2,8 @@ export class Tracker {
   id: string;
   firstName: string;
   lastName: string;
-  mobile: string;
-  area: string;
+  mobile: number;
+  otherNumber: number;
   city: string;
   state: string;
   isCovidPositiveRecovered: string;
@@ -15,22 +15,22 @@ export class Tracker {
   createdBy: string;
   updatedBy: string;
 
-  constructor() {
-    this.firstName = 'madhan';
-    this.lastName = 'tt';
-    this.mobile = 'tt';
-    this.area = 'tt';
-    this.city = 'tt';
-    this.state = 'tt';
-    this.isCovidPositiveRecovered = 'yes';
-    this.isReadyDonatePlasma = 'yes';
-    this.isNotDonatedForPast30Days = 'yes';
-    this.bloodGroup = 'tt';
-    this.createdDate = new Date();
-    this.updateDate = new Date();
-    this.createdBy = 'tt';
-    this.updatedBy = 'tt';
-  }
+  // constructor() {
+  //   this.firstName = 'madhan';
+  //   this.lastName = 'tt';
+  //   this.mobile = 'tt';
+  //   this.area = 'tt';
+  //   this.city = 'tt';
+  //   this.state = 'tt';
+  //   this.isCovidPositiveRecovered = 'yes';
+  //   this.isReadyDonatePlasma = 'yes';
+  //   this.isNotDonatedForPast30Days = 'yes';
+  //   this.bloodGroup = 'tt';
+  //   this.createdDate = new Date();
+  //   this.updateDate = new Date();
+  //   this.createdBy = 'tt';
+  //   this.updatedBy = 'tt';
+  // }
 }
 
 export enum BloodGroup {

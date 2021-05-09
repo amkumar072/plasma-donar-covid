@@ -2,8 +2,9 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { IonSearchbar } from '@ionic/angular';
+import { IonSearchbar, NavController } from '@ionic/angular';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Constant } from 'src/app/constants/constant';
 import { Tracker } from 'src/app/models/tracker.model';
 import { TrackerService } from 'src/app/services/tracker.service';
 
@@ -27,7 +28,8 @@ export class TrackerListComponent implements OnInit, OnDestroy {
   isLoadingResults = false;
 
   constructor(
-    private trackerService: TrackerService
+    private trackerService: TrackerService,
+    private navCtrl: NavController
   ) { }
 
   ngOnInit() {
@@ -45,6 +47,10 @@ export class TrackerListComponent implements OnInit, OnDestroy {
     this.trackerDataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  onAdd() {
+    this.navCtrl.navigateForward(Constant.URL_TRACKER_ADD);
+  }
+
   private fetchTrakerAll() {
     // this.trackerListObserval$ = this.trackerService.getTrackerAll();
     this.isLoadingResults = true;
@@ -56,10 +62,8 @@ export class TrackerListComponent implements OnInit, OnDestroy {
         this.trackerDataSource.sort = this.sort;
 
         this.isLoadingResults = false;
-
       }
     });
-
   }
 
 

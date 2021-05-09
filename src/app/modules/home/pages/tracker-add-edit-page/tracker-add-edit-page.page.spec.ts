@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { TrackerAddEditComponent } from './tracker-add-edit.component';
+import { TrackerAddEditPagePage } from './tracker-add-edit-page.page';
 
-describe('TrackerAddEditComponent', () => {
-  let component: TrackerAddEditComponent;
-  let fixture: ComponentFixture<TrackerAddEditComponent>;
+describe('TrackerAddEditPagePage', () => {
+  let component: TrackerAddEditPagePage;
+  let fixture: ComponentFixture<TrackerAddEditPagePage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ TrackerAddEditComponent ],
+      declarations: [ TrackerAddEditPagePage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TrackerAddEditComponent);
+    fixture = TestBed.createComponent(TrackerAddEditPagePage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
