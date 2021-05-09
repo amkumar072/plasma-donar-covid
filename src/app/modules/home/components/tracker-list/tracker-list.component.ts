@@ -1,9 +1,10 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { IonSearchbar, NavController } from '@ionic/angular';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, ReplaySubject, Subscription } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { Constant } from 'src/app/constants/constant';
 import { Tracker } from 'src/app/models/tracker.model';
 import { TrackerService } from 'src/app/services/tracker.service';
@@ -15,11 +16,13 @@ import { TrackerService } from 'src/app/services/tracker.service';
 })
 export class TrackerListComponent implements OnInit, OnDestroy {
 
+  @Input() reloadComp: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild('mySearchBar', { static: true }) searchbar: IonSearchbar;
 
-  trackerListObserval$: Observable<Tracker[]>;
+  trackerListObserval$: ReplaySubject<boolean> = new ReplaySubject(1);
 
   trackerDataSource: MatTableDataSource<Tracker>;
   columnsToDisplay = ['firstName', 'mobile', 'area', 'city', 'state', 'isCovidPositiveRecovered', 'isReadyDonatePlasma',
@@ -34,12 +37,23 @@ export class TrackerListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.fetchTrakerAll();
+    this.reloadCompMethod();
+  }
+
+  reloadCompMethod() {
+    this.reloadComp
+      .pipe(takeUntil(this.trackerListObserval$))
+      .subscribe(
+        (result: boolean) => {
+          if (result) {
+            this.fetchTrakerAll();
+          }
+        });
   }
 
   ngOnDestroy() {
-    // this.trackerListObserval$.complete();
-    // this.trackerListObserval$.complete();
-
+    this.trackerListObserval$.next(null);
+    this.trackerListObserval$.complete();
   }
 
   applyFilter(event: Event) {
@@ -52,7 +66,6 @@ export class TrackerListComponent implements OnInit, OnDestroy {
   }
 
   private fetchTrakerAll() {
-    // this.trackerListObserval$ = this.trackerService.getTrackerAll();
     this.isLoadingResults = true;
     this.trackerService.getTrackerAll().subscribe((res: Tracker[]) => {
       if (res) {

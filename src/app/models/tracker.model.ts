@@ -33,13 +33,13 @@ export class Tracker {
   // }
 }
 
-export enum BloodGroup {
-  ['A+'] = 'A+',
-  ['A-'] = 'A-',
-  // 'B+',
-  // 'B-',
-  // 'O+',
-  // 'O-',
-  // 'AB+',
-  // 'AB-'
-}
+// export enum BloodGroup {
+//   ['A+'] = 'A+',
+//   ['A-'] = 'A-',
+//   ['B+'] = 'B+',
+//   ['B-'] = 'B-',
+//   ['O+'] = 'B-',
+//   ['O-'] = 'B-',
+//   ['AB+'] = 'AB+',
+//   ['AB-'] = 'AB-'
+// }

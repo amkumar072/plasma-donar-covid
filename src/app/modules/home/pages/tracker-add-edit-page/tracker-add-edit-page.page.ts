@@ -1,6 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { LoadingController, NavController } from '@ionic/angular';
+import { map } from 'rxjs/operators';
+import { Constant } from 'src/app/constants/constant';
 import { Tracker } from 'src/app/models/tracker.model';
+import { AuthService } from 'src/app/services/auth.service';
 import { TrackerService } from 'src/app/services/tracker.service';
 
 @Component({
@@ -11,17 +15,36 @@ import { TrackerService } from 'src/app/services/tracker.service';
 export class TrackerAddEditPagePage implements OnInit {
   @Input() id: string;
 
+  currentUser: string;
   form: FormGroup;
   tracker: Tracker;
   isEdit = false;
   displayButtonText: string;
-
+  lists = ['Yes', 'No'];
+  bloodGroupList = [
+    'A+',
+    'A-',
+    'B+',
+    'B-',
+    'B-',
+    'B-',
+    'AB+',
+    'AB-'
+  ];
+  stateLists = Constant.stateList;
 
   constructor(
-    private trackerService: TrackerService
+    private trackerService: TrackerService,
+    private navCtrl: NavController,
+    private authService: AuthService,
+    private loadinCtrl: LoadingController
   ) { }
 
   ngOnInit() {
+
+    this.authService.userName.subscribe((userName) => {
+      this.currentUser = userName;
+    });
 
     if (!this.id) {
       this.tracker = new Tracker();
@@ -79,11 +102,37 @@ export class TrackerAddEditPagePage implements OnInit {
     });
   }
 
-  async addTracker() {
-    const tracker = new Tracker();
-    console.log(tracker);
-
-    await this.trackerService.createTracker(tracker);
+  onCancel() {
+    this.navCtrl.back();
   }
+
+  async onClick() {
+
+
+    if (this.form.invalid) {
+      console.log('test');
+      this.form.markAllAsTouched();
+      return;
+    } else if (!this.isEdit) {
+      await this.onAdd();
+    } else {
+      // await this.onUpdate();
+    }
+  }
+
+
+  async onAdd() {
+    const loading = await this.loadinCtrl.create({ message: 'Saving..,' });
+
+    loading.present();
+    const tracker: Tracker = this.form.getRawValue();
+    tracker.createdBy = this.currentUser;
+    await this.trackerService.createTracker(tracker);
+    await loading.dismiss();
+
+    this.onCancel();
+
+  }
+
 
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +7,12 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  reloadComp: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  constructor() { }
+
+  ionViewWillEnter() {
+    this.reloadComp.emit(true);
+  }
 
 }
