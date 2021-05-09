@@ -1,12 +1,12 @@
 {
   "name": "plasma-donar-covid",
   "version": "0.0.1",
-  "author": "Ionic Framework",
+  "author": "Madhankumar Anandan",
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "ionic serve",
+    "build": "ionic build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
