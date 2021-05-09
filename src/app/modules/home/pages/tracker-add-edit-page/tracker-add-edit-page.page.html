@@ -15,12 +15,14 @@
         <ion-col size-sm="6" offset-sm="3">
           <ion-item>
             <ion-label position="floating"> First Name<span class="required-field"></span></ion-label>
-            <ion-input type="text" formControlName="firstName"></ion-input>
+            <ion-input type="text" formControlName="firstName" maxlength="25"></ion-input>
           </ion-item>
           <ion-item
             *ngIf="form.get('firstName').invalid && (form.get('firstName').dirty || form.get('firstName').touched)"
             lines="none">
-            <ion-label color="danger">Enter the firstName</ion-label>
+            <ion-label *ngIf="form.get('firstName').errors.required" color="danger">Enter the firstName</ion-label>
+            <ion-label *ngIf="form.get('firstName').errors.maxlength" color="danger">Enter the 25 Chars
+            </ion-label>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -29,12 +31,14 @@
         <ion-col size-sm="6" offset-sm="3">
           <ion-item>
             <ion-label position="floating">Last Name</ion-label>
-            <ion-input type="text" formControlName="lastName">
+            <ion-input type="text" formControlName="lastName" maxlength="25">
             </ion-input>
           </ion-item>
           <ion-item *ngIf="form.get('lastName').invalid && (form.get('lastName').dirty || form.get('lastName').touched)"
             lines="none">
-            <ion-label color="danger">Enter the lastName</ion-label>
+            <ion-label *ngIf="form.get('lastName').errors.required" color="danger">Enter the lastName</ion-label>
+            <ion-label *ngIf="form.get('lastName').errors.maxlength" color="danger">Enter the 25 Chars
+            </ion-label>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -66,6 +70,16 @@
             <ion-input type="string" formControlName="otherNumber" input="decimal" minlength="10" maxlength="10"
               pattern="\d*">
             </ion-input>
+          </ion-item>
+          <ion-item
+            *ngIf="form.get('otherNumber').invalid && (form.get('otherNumber').dirty || form.get('otherNumber').touched)"
+            lines="none">
+            <ion-label *ngIf="form.get('otherNumber').errors.required" color="danger">Enter the Phone Number
+            </ion-label>
+            <ion-label *ngIf="form.get('otherNumber').errors.pattern" color="danger">Enter only Numbers
+            </ion-label>
+            <ion-label *ngIf="form.get('otherNumber').errors.minlength" color="danger">Enter the 10 Digits
+            </ion-label>
           </ion-item>
         </ion-col>
       </ion-row>

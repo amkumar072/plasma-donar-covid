@@ -45,6 +45,10 @@ export class Constant {
 
 
 
+  // css class
+  static readonly MODAL_75_PERCENTAGE_SCREEN: string = 'modal-75-percentage-screen';
+  static readonly MODAL_FULL_SCREEN: string = 'modal-fullscreen';
+
   // AppURL
 
   static readonly AUTH = '/auth';

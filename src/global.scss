@@ -70,3 +70,42 @@ tr.example-element-row:not(.example-expanded-row):active {
   content: "*";
   color: red;
 }
+
+// Start : Modal display
+.modal-fullscreen {
+  .modal-wrapper {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    position: absolute;
+    top: 5;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 95%;
+  }
+}
+
+.modal-75-percentage-screen {
+  .modal-wrapper {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    position: absolute;
+    top: 5;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 75%;
+  }
+}
+
+// End: Modal display
+
+.my-custom-alert .alert-wrapper {
+  min-width: 400px !important;
+}
+
+.my-custom-alert .alert-message {
+  max-height: 90% !important;
+}

@@ -1,14 +1,14 @@
 <ion-content>
   <ion-grid class="ion-no-padding">
     <ion-row>
-      <ion-col size-xs="10" size-sm="11">
+      <ion-col size-xs="9" size-sm="10" size-md="11">
         <ion-searchbar #mySearchBar placeholder="Search By City or State " animated='true'
           (ionChange)="applyFilter($event)">
         </ion-searchbar>
       </ion-col>
-      <ion-col size-xs="2" size-sm="1">
+      <ion-col size-xs="3" size-sm="2" size-md="1">
         <ion-button (click)="onAdd()">
-          <ion-icon name="add-circle-outline"> </ion-icon>
+          <ion-icon name="add-circle-outline"> </ion-icon> Add
         </ion-button>
       </ion-col>
     </ion-row>
@@ -49,8 +49,8 @@
           </ng-container>
 
           <ng-container matColumnDef="state">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="ion-hide-sm-down"> State </th>
-            <td mat-cell *matCellDef="let element" class="ion-hide-sm-down">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> State </th>
+            <td mat-cell *matCellDef="let element">
               <p>{{element.state}}</p>
             </td>
           </ng-container>
@@ -78,8 +78,8 @@
             </td>
           </ng-container>
           <ng-container matColumnDef="bloodGroup">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> bloodGroup </th>
-            <td mat-cell *matCellDef="let element">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="ion-hide-sm-down"> bloodGroup </th>
+            <td mat-cell *matCellDef="let element" class="ion-hide-sm-down">
               <ion-label>{{element.bloodGroup}}</ion-label>
             </td>
           </ng-container>

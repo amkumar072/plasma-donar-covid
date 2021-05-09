@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { Constant } from 'src/app/constants/constant';
 import { AuthService } from 'src/app/services/auth.service';
+import { HelpComponent } from '../help/help.component';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private modalCtrl: ModalController
   ) { }
 
   ngOnInit() {
@@ -31,6 +33,17 @@ export class HeaderComponent implements OnInit {
   async logOut() {
     await this.authService.logOutService();
     window.location.reload();
+  }
+
+  async onHelp() {
+    const modal = await this.modalCtrl.create({
+      component: HelpComponent,
+      componentProps: {},
+      cssClass: Constant.MODAL_75_PERCENTAGE_SCREEN
+    });
+
+    await modal.present();
+    return modal.onDidDismiss();
   }
 
 }

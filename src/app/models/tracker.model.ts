@@ -16,16 +16,16 @@ export class Tracker {
   updatedBy: string;
 
   // constructor() {
-  //   this.firstName = 'madhan';
+  //   this.firstName = 'tste';
   //   this.lastName = 'tt';
-  //   this.mobile = 'tt';
-  //   this.area = 'tt';
+  //   this.mobile = 1231231231;
+  //   this.otherNumber = 1233123123;
   //   this.city = 'tt';
-  //   this.state = 'tt';
-  //   this.isCovidPositiveRecovered = 'yes';
-  //   this.isReadyDonatePlasma = 'yes';
-  //   this.isNotDonatedForPast30Days = 'yes';
-  //   this.bloodGroup = 'tt';
+  //   this.state = 'Tamil Nadu';
+  //   this.isCovidPositiveRecovered = 'Yes';
+  //   this.isReadyDonatePlasma = 'Yes';
+  //   this.isNotDonatedForPast30Days = 'Yes';
+  //   this.bloodGroup = 'A+';
   //   this.createdDate = new Date();
   //   this.updateDate = new Date();
   //   this.createdBy = 'tt';

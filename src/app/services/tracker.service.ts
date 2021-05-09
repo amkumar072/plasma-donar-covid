@@ -49,9 +49,11 @@ export class TrackerService {
 
   }
 
-  async createTracker(tracker: Tracker): Promise<void> {
+  async createTracker(tracker: Tracker): Promise<any> {
     // await this.db.collection(this.COLLECTION_TRACKER).add(tracker);
-    await this.db.collection(this.COLLECTION_TRACKER).doc().set(Object.assign({}, tracker));
+    const result = await this.db.collection(this.COLLECTION_TRACKER).doc().set(Object.assign({}, tracker));
     await this.getTrackerAllInDb();
+
+    return result;
   }
 }

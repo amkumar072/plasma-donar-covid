@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { LoadingController, NavController } from '@ionic/angular';
-import { map } from 'rxjs/operators';
+import { AlertController, LoadingController, NavController, ToastController } from '@ionic/angular';
 import { Constant } from 'src/app/constants/constant';
 import { Tracker } from 'src/app/models/tracker.model';
 import { AuthService } from 'src/app/services/auth.service';
@@ -37,7 +36,9 @@ export class TrackerAddEditPagePage implements OnInit {
     private trackerService: TrackerService,
     private navCtrl: NavController,
     private authService: AuthService,
-    private loadinCtrl: LoadingController
+    private loadinCtrl: LoadingController,
+    private alertCtrl: AlertController,
+    private toastCtrl: ToastController
   ) { }
 
   ngOnInit() {
@@ -50,7 +51,7 @@ export class TrackerAddEditPagePage implements OnInit {
       this.tracker = new Tracker();
 
       this.isEdit = false;
-      this.displayButtonText = 'Save';
+      this.displayButtonText = 'Preview';
       this.formControl();
     } else {
       // this.customerDetailById(this.id);
@@ -103,7 +104,7 @@ export class TrackerAddEditPagePage implements OnInit {
   }
 
   onCancel() {
-    this.navCtrl.back();
+    this.navCtrl.navigateBack(Constant.HOME);
   }
 
   async onClick() {
@@ -114,23 +115,80 @@ export class TrackerAddEditPagePage implements OnInit {
       this.form.markAllAsTouched();
       return;
     } else if (!this.isEdit) {
-      await this.onAdd();
+
+      const tracker: Tracker = this.form.getRawValue();
+      tracker.createdBy = this.currentUser;
+
+      await this.presentAlertConfirm(tracker);
     } else {
       // await this.onUpdate();
     }
   }
 
+  async presentAlertConfirm(tracker: Tracker) {
 
-  async onAdd() {
-    const loading = await this.loadinCtrl.create({ message: 'Saving..,' });
+    const message = `
+    <p> Name : ${tracker.firstName}  ${tracker.lastName == null ? '' : tracker.lastName}  </p>
+    <p>  Mobile : ${tracker.mobile} </p>
+    <p> OtherNumber: ${tracker.otherNumber == null ? '' : tracker.otherNumber} </p>
+    <p>  City: ${tracker.city}</p>
+    <p>  State: ${tracker.state}</p>
+    <p>  IsCovidPositiveRecovered: ${tracker.isCovidPositiveRecovered}</p>
+    <p>  IsReadyDonatePlasma: ${tracker.isReadyDonatePlasma}</p>
+    <p>  IsNotDonatedForPast30Days: ${tracker.isNotDonatedForPast30Days}</p>
+    <p>  BloodGroup: ${tracker.bloodGroup}</p>
+
+
+    <ul>
+      *  You understand that the provided information be used to share details with covid warriors looking for Blood/Plasma.
+        Provided Data will be deleted after 60 days of enrolment.
+    </ul>
+    `;
+
+    const alert = await this.alertCtrl.create({
+      header: 'Confirm!',
+      cssClass: 'my-custom-alert',
+      backdropDismiss: false,
+      message,
+      buttons: [
+        {
+          text: 'Edit',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            // console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Submit',
+          handler: () => {
+            this.onAdd(tracker);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+
+  async onAdd(tracker: Tracker) {
+    const loading = await this.loadinCtrl.create({ message: 'Saving...' });
 
     loading.present();
-    const tracker: Tracker = this.form.getRawValue();
-    tracker.createdBy = this.currentUser;
-    await this.trackerService.createTracker(tracker);
-    await loading.dismiss();
+    try {
+      await this.trackerService.createTracker(tracker);
+      await loading.dismiss();
 
-    this.onCancel();
+      this.onCancel();
+      await (await this.toastCtrl.create({ message: 'Data Saved Succesfully', duration: 5000 })).present();
+    }
+    catch (error) {
+      console.log('Error While Saving Data', error);
+
+      await (await this.toastCtrl.create({ message: 'Error While Saving Data', duration: 5000 })).present();
+
+      await loading.dismiss();
+    }
 
   }
 
