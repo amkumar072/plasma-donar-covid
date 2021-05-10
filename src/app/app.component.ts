@@ -11,7 +11,7 @@ export class AppComponent {
     updates.available.subscribe(event => {
       updates.activateUpdate().then(() => {
         console.log('document will load');
-        window.location.reload();
+        document.location.reload();
       });
     });
   }
