@@ -179,7 +179,11 @@ ${Constant.CONSENT_MESSAGE}
       await loading.dismiss();
 
       this.onCancel();
-      await (await this.toastCtrl.create({ message: 'Data Saved Succesfully', duration: 5000 })).present();
+      await (await this.toastCtrl.create({
+        message: 'Donar Details Saved Succesfully',
+        duration: 8000,
+        position: 'top'
+      })).present();
     }
     catch (error) {
       console.log('Error While Saving Data', error);
