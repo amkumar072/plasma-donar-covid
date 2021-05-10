@@ -27,7 +27,7 @@ export class TrackerListComponent implements OnInit, OnDestroy {
 
   trackerDataSource: MatTableDataSource<Tracker>;
   columnsToDisplay = ['firstName', 'mobile', 'city', 'state', 'isReadyDonatePlasma',
-    'isNotDonatedForPast30Days', 'bloodGroup'];
+    'isDonatedForPast30Days', 'bloodGroup'];
   resultsLength = 0;
   isLoadingResults = false;
 

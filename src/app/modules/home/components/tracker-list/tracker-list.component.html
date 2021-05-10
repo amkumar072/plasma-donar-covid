@@ -2,8 +2,7 @@
   <ion-grid class="ion-no-padding">
     <ion-row>
       <ion-col size-xs="12">
-        <ion-searchbar #mySearchBar placeholder="Search By City or State " animated='true'
-          (ionChange)="applyFilter($event)">
+        <ion-searchbar #mySearchBar placeholder="Search" animated='true' (ionChange)="applyFilter($event)">
         </ion-searchbar>
       </ion-col>
     </ion-row>
@@ -65,11 +64,11 @@
             </td>
           </ng-container>
 
-          <ng-container matColumnDef="isNotDonatedForPast30Days">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="ion-hide-sm-down"> Not Donated Blood/Plasma in
+          <ng-container matColumnDef="isDonatedForPast30Days">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="ion-hide-sm-down"> Donated Blood/Plasma in
               last 30 Days? </th>
             <td mat-cell *matCellDef="let element" class="ion-hide-sm-down">
-              <ion-label>{{element.isNotDonatedForPast30Days}}</ion-label>
+              <ion-label>{{element.isDonatedForPast30Days}}</ion-label>
             </td>
           </ng-container>
           <ng-container matColumnDef="bloodGroup">

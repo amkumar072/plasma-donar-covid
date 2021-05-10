@@ -8,7 +8,7 @@ export class Tracker {
   state: string;
   isCovidPositiveRecovered: string;
   isReadyDonatePlasma: string;
-  isNotDonatedForPast30Days: string;
+  isDonatedForPast30Days: string;
   bloodGroup: string;
   createdDate = new Date();
   updateDate: Date;
@@ -24,7 +24,7 @@ export class Tracker {
   //   this.state = 'Tamil Nadu';
   //   this.isCovidPositiveRecovered = 'Yes';
   //   this.isReadyDonatePlasma = 'Yes';
-  //   this.isNotDonatedForPast30Days = 'Yes';
+  //   this.isDonatedForPast30Days = 'Yes';
   //   this.bloodGroup = 'A+';
   //   this.createdDate = new Date();
   //   this.updateDate = new Date();

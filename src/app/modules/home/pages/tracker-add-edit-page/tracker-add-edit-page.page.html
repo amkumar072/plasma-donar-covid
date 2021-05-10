@@ -139,18 +139,18 @@
       <ion-row>
         <ion-col size-sm="6" offset-sm="3">
           <ion-item>
-            <ion-label position="floating">Not Donated Blood/Plasma in last 30 Days? <span
-                class="required-field"></span></ion-label>
-            <ion-select value="ALL" formControlName="isNotDonatedForPast30Days" interface="action-sheet">
+            <ion-label position="floating"> Donated Blood/Plasma in last 30 Days? <span class="required-field"></span>
+            </ion-label>
+            <ion-select value="ALL" formControlName="isDonatedForPast30Days" interface="action-sheet">
               <ion-select-option *ngFor="let list of lists" value={{list}}>
                 {{list}}
               </ion-select-option>
             </ion-select>
           </ion-item>
           <ion-item
-            *ngIf="form.get('isNotDonatedForPast30Days').invalid && (form.get('isNotDonatedForPast30Days').dirty || form.get('isNotDonatedForPast30Days').touched)"
+            *ngIf="form.get('isDonatedForPast30Days').invalid && (form.get('isDonatedForPast30Days').dirty || form.get('isDonatedForPast30Days').touched)"
             lines="none">
-            <ion-label color="danger">Select the Not Donated Blood/Plasma in last 30 Days</ion-label>
+            <ion-label color="danger">Select the Donated Blood/Plasma in last 30 Days</ion-label>
           </ion-item>
         </ion-col>
       </ion-row>

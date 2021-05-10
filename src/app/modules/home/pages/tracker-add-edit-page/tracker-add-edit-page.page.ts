@@ -92,7 +92,7 @@ export class TrackerAddEditPagePage implements OnInit {
         updateOn: 'change',
         validators: [Validators.required]
       }),
-      isNotDonatedForPast30Days: new FormControl(this.tracker.isNotDonatedForPast30Days, {
+      isDonatedForPast30Days: new FormControl(this.tracker.isDonatedForPast30Days, {
         updateOn: 'change',
         validators: [Validators.required]
       }),
@@ -134,7 +134,7 @@ export class TrackerAddEditPagePage implements OnInit {
     <p>  City: ${tracker.city}</p>
     <p>  State: ${tracker.state}</p>
     <p>  Ready to donate Blood/Plasma? : ${tracker.isReadyDonatePlasma}</p>
-    <p>  Not Donated Blood/Plasma in last 30 Days?: ${tracker.isNotDonatedForPast30Days}</p>
+    <p>  Donated Blood/Plasma in last 30 Days?: ${tracker.isDonatedForPast30Days}</p>
     <p>  Blood Group: ${tracker.bloodGroup}</p>
 
 
