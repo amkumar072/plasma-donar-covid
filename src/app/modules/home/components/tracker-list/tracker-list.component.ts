@@ -2,12 +2,13 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, ViewChild } from '@a
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { IonSearchbar, NavController } from '@ionic/angular';
+import { IonSearchbar, ModalController, NavController } from '@ionic/angular';
 import { BehaviorSubject, Observable, ReplaySubject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Constant } from 'src/app/constants/constant';
 import { Tracker } from 'src/app/models/tracker.model';
 import { TrackerService } from 'src/app/services/tracker.service';
+import { TrackerViewComponent } from '../tracker-view/tracker-view.component';
 
 @Component({
   selector: 'app-tracker-list',
@@ -32,7 +33,8 @@ export class TrackerListComponent implements OnInit, OnDestroy {
 
   constructor(
     private trackerService: TrackerService,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private modalCtrl: ModalController
   ) { }
 
   ngOnInit() {
@@ -65,6 +67,16 @@ export class TrackerListComponent implements OnInit, OnDestroy {
     this.navCtrl.navigateForward(Constant.URL_TRACKER_ADD);
   }
 
+  async onView(id: string) {
+    const modal = await this.modalCtrl.create({
+      component: TrackerViewComponent,
+      componentProps: { id },
+      cssClass: Constant.MODAL_FULL_SCREEN
+    });
+
+    await modal.present();
+  }
+
   private fetchTrakerAll() {
     this.isLoadingResults = true;
     this.trackerService.getTrackerAll().subscribe((res: Tracker[]) => {
@@ -78,7 +90,6 @@ export class TrackerListComponent implements OnInit, OnDestroy {
       }
     });
   }
-
 
 
 

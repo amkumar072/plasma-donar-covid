@@ -56,4 +56,12 @@ export class TrackerService {
 
     return result;
   }
+
+  getTrackerById(id: string): Observable<Tracker[]> {
+    // find the details in local cache itself
+    return this.trackerList.asObservable()
+      .pipe(
+        map((trackerList: Tracker[]) => trackerList.filter(cust => cust.id === id))
+      );
+  }
 }
