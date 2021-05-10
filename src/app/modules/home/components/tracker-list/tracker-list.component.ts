@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { IonSearchbar, ModalController, NavController } from '@ionic/angular';
-import { BehaviorSubject, Observable, ReplaySubject, Subscription } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Constant } from 'src/app/constants/constant';
 import { Tracker } from 'src/app/models/tracker.model';
@@ -26,7 +26,7 @@ export class TrackerListComponent implements OnInit, OnDestroy {
   trackerListObserval$: ReplaySubject<boolean> = new ReplaySubject(1);
 
   trackerDataSource: MatTableDataSource<Tracker>;
-  columnsToDisplay = ['firstName', 'mobile', 'area', 'city', 'state', 'isCovidPositiveRecovered', 'isReadyDonatePlasma',
+  columnsToDisplay = ['firstName', 'mobile', 'city', 'state', 'isReadyDonatePlasma',
     'isNotDonatedForPast30Days', 'bloodGroup'];
   resultsLength = 0;
   isLoadingResults = false;

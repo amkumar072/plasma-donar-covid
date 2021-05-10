@@ -1,14 +1,14 @@
 <ion-content>
   <ion-grid class="ion-no-padding">
     <ion-row>
-      <ion-col size-xs="9" size-sm="10" size-md="11">
+      <ion-col size-xs="12">
         <ion-searchbar #mySearchBar placeholder="Search By City or State " animated='true'
           (ionChange)="applyFilter($event)">
         </ion-searchbar>
       </ion-col>
-      <ion-col size-xs="3" size-sm="2" size-md="1">
+      <ion-col size-xs="6">
         <ion-button (click)="onAdd()">
-          <ion-icon name="add-circle-outline"> </ion-icon> Add
+          <ion-icon slot="start" name="add-circle-outline"> </ion-icon> Add Blood/Plasma Donor Details
         </ion-button>
       </ion-col>
     </ion-row>
@@ -35,13 +35,6 @@
             </td>
           </ng-container>
 
-          <ng-container matColumnDef="area">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="ion-hide-sm-down"> Area </th>
-            <td mat-cell *matCellDef="let element" class="ion-hide-sm-down">
-              <p>{{element.area}}</p>
-            </td>
-          </ng-container>
-
           <ng-container matColumnDef="city">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> City </th>
             <td mat-cell *matCellDef="let element">
@@ -56,30 +49,22 @@
             </td>
           </ng-container>
 
-          <ng-container matColumnDef="isCovidPositiveRecovered">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="ion-hide-sm-down"> Is Covid Positive Recovered?
-            </th>
-            <td mat-cell *matCellDef="let element" class="ion-hide-sm-down">
-              <ion-label>{{element.isCovidPositiveRecovered }}</ion-label>
-            </td>
-          </ng-container>
-
           <ng-container matColumnDef="isReadyDonatePlasma">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Is Ready To Donate Plasma? </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Ready to donate Blood/Plasma? </th>
             <td mat-cell *matCellDef="let element">
               <ion-label>{{element.isReadyDonatePlasma}}</ion-label>
             </td>
           </ng-container>
 
           <ng-container matColumnDef="isNotDonatedForPast30Days">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="ion-hide-sm-down"> IsNot Donated For Past
-              30Days? </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="ion-hide-sm-down"> Not Donated Blood/Plasma in
+              last 30 Days? </th>
             <td mat-cell *matCellDef="let element" class="ion-hide-sm-down">
               <ion-label>{{element.isNotDonatedForPast30Days}}</ion-label>
             </td>
           </ng-container>
           <ng-container matColumnDef="bloodGroup">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="ion-hide-sm-down"> bloodGroup </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="ion-hide-sm-down"> Blood Group </th>
             <td mat-cell *matCellDef="let element" class="ion-hide-sm-down">
               <ion-label>{{element.bloodGroup}}</ion-label>
             </td>

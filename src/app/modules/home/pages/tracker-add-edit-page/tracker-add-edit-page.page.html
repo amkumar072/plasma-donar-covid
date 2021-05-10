@@ -88,7 +88,7 @@
         <ion-col size-sm="6" offset-sm="3">
           <ion-item>
             <ion-label position="floating">City <span class="required-field"></span></ion-label>
-            <ion-input type="string" formControlName="city">
+            <ion-input type="string" formControlName="city" maxlength="25">
             </ion-input>
           </ion-item>
           <ion-item *ngIf="form.get('city').invalid && (form.get('city').dirty || form.get('city').touched)"
@@ -116,7 +116,7 @@
       </ion-row>
 
 
-      <ion-row>
+      <!-- <ion-row>
         <ion-col size-sm="6" offset-sm="3">
           <ion-item>
             <ion-label position="floating">IsCovidPositiveRecovered? <span class="required-field"></span></ion-label>
@@ -132,12 +132,13 @@
             <ion-label color="danger">Select the isCovidPositiveRecovered</ion-label>
           </ion-item>
         </ion-col>
-      </ion-row>
+      </ion-row> -->
 
       <ion-row>
         <ion-col size-sm="6" offset-sm="3">
           <ion-item>
-            <ion-label position="floating">IsReadyDonatePlasma? <span class="required-field"></span></ion-label>
+            <ion-label position="floating">Ready to donate Blood/Plasma? <span class="required-field"></span>
+            </ion-label>
             <ion-select value="ALL" formControlName="isReadyDonatePlasma" interface="action-sheet">
               <ion-select-option *ngFor="let list of lists" value={{list}}>
                 {{list}}
@@ -147,7 +148,7 @@
           <ion-item
             *ngIf="form.get('isReadyDonatePlasma').invalid && (form.get('isReadyDonatePlasma').dirty || form.get('isReadyDonatePlasma').touched)"
             lines="none">
-            <ion-label color="danger">Select the isReadyDonatePlasma</ion-label>
+            <ion-label color="danger">Select the Ready to donate Blood/Plasma</ion-label>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -157,7 +158,8 @@
       <ion-row>
         <ion-col size-sm="6" offset-sm="3">
           <ion-item>
-            <ion-label position="floating">IsNotDonatedForPast30Days? <span class="required-field"></span></ion-label>
+            <ion-label position="floating">Not Donated Blood/Plasma in last 30 Days? <span
+                class="required-field"></span></ion-label>
             <ion-select value="ALL" formControlName="isNotDonatedForPast30Days" interface="action-sheet">
               <ion-select-option *ngFor="let list of lists" value={{list}}>
                 {{list}}
@@ -167,7 +169,7 @@
           <ion-item
             *ngIf="form.get('isNotDonatedForPast30Days').invalid && (form.get('isNotDonatedForPast30Days').dirty || form.get('isNotDonatedForPast30Days').touched)"
             lines="none">
-            <ion-label color="danger">Select the isNotDonatedForPast30Days</ion-label>
+            <ion-label color="danger">Select the Not Donated Blood/Plasma in last 30 Days</ion-label>
           </ion-item>
         </ion-col>
       </ion-row>

@@ -84,10 +84,10 @@ export class TrackerAddEditPagePage implements OnInit {
         updateOn: 'change',
         validators: [Validators.required]
       }),
-      isCovidPositiveRecovered: new FormControl(this.tracker.isCovidPositiveRecovered, {
-        updateOn: 'change',
-        validators: [Validators.required]
-      }),
+      // isCovidPositiveRecovered: new FormControl(this.tracker.isCovidPositiveRecovered, {
+      //   updateOn: 'change',
+      //   validators: [Validators.required]
+      // }),
       isReadyDonatePlasma: new FormControl(this.tracker.isReadyDonatePlasma, {
         updateOn: 'change',
         validators: [Validators.required]
