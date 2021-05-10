@@ -1,3 +1,5 @@
+import { environment } from 'src/environments/environment';
+
 /* eslint-disable @typescript-eslint/naming-convention */
 export class Constant {
   static readonly stateList: string[] = [
@@ -57,4 +59,5 @@ export class Constant {
   static readonly URL_TRACKER_EDIT = 'home/edit';
 
 
+  public static readonly COLLECTION_TRACKER_URL = `/${environment.dbPrefix}-tracker`;
 }

@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  dbPrefix: 'local',
   firebaseConfig: {
     apiKey: 'AIzaSyDnykD29cqdymppfnhuUQUPURoK7QqBov4',
     authDomain: 'plasma-donar-covid.firebaseapp.com',

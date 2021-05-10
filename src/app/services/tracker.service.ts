@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
+import { Constant } from '../constants/constant';
 import { Tracker } from '../models/tracker.model';
 
 @Injectable({
@@ -10,9 +11,6 @@ import { Tracker } from '../models/tracker.model';
 export class TrackerService {
 
   trackerList: BehaviorSubject<Tracker[]> = new BehaviorSubject<Tracker[]>(null);
-
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  private COLLECTION_TRACKER = 'tracker';
 
   constructor(
     private db: AngularFirestore
@@ -33,7 +31,7 @@ export class TrackerService {
   async getTrackerAllInDb(): Promise<Tracker[]> {
     const trackerList: Tracker[] = [];
 
-    return this.db.collection(this.COLLECTION_TRACKER).get().pipe(
+    return this.db.collection(Constant.COLLECTION_TRACKER_URL).get().pipe(
       map((res) => {
         res.docs.forEach(doc => {
           const data: any = doc.data();
@@ -50,8 +48,7 @@ export class TrackerService {
   }
 
   async createTracker(tracker: Tracker): Promise<any> {
-    // await this.db.collection(this.COLLECTION_TRACKER).add(tracker);
-    const result = await this.db.collection(this.COLLECTION_TRACKER).doc().set(Object.assign({}, tracker));
+    const result = await this.db.collection(Constant.COLLECTION_TRACKER_URL).doc().set(Object.assign({}, tracker));
     await this.getTrackerAllInDb();
 
     return result;
