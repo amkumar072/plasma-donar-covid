@@ -25,8 +25,8 @@ export class TrackerAddEditPagePage implements OnInit {
     'A-',
     'B+',
     'B-',
-    'B-',
-    'B-',
+    'O+',
+    'O-',
     'AB+',
     'AB-'
   ];
