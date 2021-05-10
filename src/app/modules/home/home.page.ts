@@ -1,4 +1,5 @@
 import { Component, EventEmitter } from '@angular/core';
+import { Constant } from 'src/app/constants/constant';
 
 @Component({
   selector: 'app-home',
@@ -6,6 +7,8 @@ import { Component, EventEmitter } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+
+  footerMessage: string = Constant.FOOOTER_MESSAGE;
 
   reloadComp: EventEmitter<boolean> = new EventEmitter<boolean>();
 

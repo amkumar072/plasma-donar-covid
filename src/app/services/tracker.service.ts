@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { LoadingController } from '@ionic/angular';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
 import { Constant } from '../constants/constant';
@@ -13,7 +14,8 @@ export class TrackerService {
   trackerList: BehaviorSubject<Tracker[]> = new BehaviorSubject<Tracker[]>(null);
 
   constructor(
-    private db: AngularFirestore
+    private db: AngularFirestore,
+    private loadinCtrl: LoadingController
   ) { }
 
 
@@ -30,7 +32,9 @@ export class TrackerService {
 
   async getTrackerAllInDb(): Promise<Tracker[]> {
     const trackerList: Tracker[] = [];
+    const loading = await this.loadinCtrl.create({ message: 'Loading...' });
 
+    loading.present();
     return this.db.collection(Constant.COLLECTION_TRACKER_URL).get().pipe(
       map((res) => {
         res.docs.forEach(doc => {
@@ -41,7 +45,11 @@ export class TrackerService {
         this.trackerList.next(trackerList);
         // eslint-disable-next-line no-console
         // console.debug('trackerList :: getTrackerAllInDb ' + JSON.stringify(trackerList));
+        loading.dismiss();
         return trackerList;
+      }, (error) => {
+        loading.dismiss();
+        return error;
       })
     ).toPromise();
 

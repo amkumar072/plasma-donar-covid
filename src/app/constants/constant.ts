@@ -59,5 +59,11 @@ export class Constant {
   static readonly URL_TRACKER_EDIT = 'home/edit';
 
 
-  public static readonly COLLECTION_TRACKER_URL = `/${environment.dbPrefix}-tracker`;
+  static readonly COLLECTION_TRACKER_URL = `/${environment.dbPrefix}-tracker`;
+
+  static readonly CONSENT_MESSAGE = `* I understand that the provided information can be used to share details with
+  friends/families of covid warriors looking for Blood/Plasma and can reach out to me on provided
+  information. Enrolment details will be automatically deleted after 60 days.`;
+
+  static readonly FOOOTER_MESSAGE = `* This app is meant for emergency medical purposes data sharing only.`;
 }

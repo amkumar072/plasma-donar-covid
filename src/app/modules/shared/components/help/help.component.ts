@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { Constant } from 'src/app/constants/constant';
 
 @Component({
   selector: 'app-help',
@@ -7,6 +9,10 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./help.component.scss'],
 })
 export class HelpComponent implements OnInit {
+
+  CONSENT_MESSAGE: string = Constant.CONSENT_MESSAGE;
+  FOOOTER_MESSAGE: string = Constant.FOOOTER_MESSAGE;
+
 
   constructor(
     private modalCtrl: ModalController

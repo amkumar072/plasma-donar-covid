@@ -67,6 +67,10 @@ export class TrackerListComponent implements OnInit, OnDestroy {
     this.navCtrl.navigateForward(Constant.URL_TRACKER_ADD);
   }
 
+  async onReload() {
+    await this.trackerService.getTrackerAllInDb();
+  }
+
   async onView(id: string) {
     const modal = await this.modalCtrl.create({
       component: TrackerViewComponent,

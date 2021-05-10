@@ -130,19 +130,17 @@ export class TrackerAddEditPagePage implements OnInit {
     const message = `
     <p> Name : ${tracker.firstName}  ${tracker.lastName == null ? '' : tracker.lastName}  </p>
     <p>  Mobile : ${tracker.mobile} </p>
-    <p> OtherNumber: ${tracker.otherNumber == null ? '' : tracker.otherNumber} </p>
+    <p>  OtherNumber: ${tracker.otherNumber == null ? '' : tracker.otherNumber} </p>
     <p>  City: ${tracker.city}</p>
     <p>  State: ${tracker.state}</p>
-    <p>  IsCovidPositiveRecovered: ${tracker.isCovidPositiveRecovered}</p>
-    <p>  IsReadyDonatePlasma: ${tracker.isReadyDonatePlasma}</p>
-    <p>  IsNotDonatedForPast30Days: ${tracker.isNotDonatedForPast30Days}</p>
-    <p>  BloodGroup: ${tracker.bloodGroup}</p>
+    <p>  Ready to donate Blood/Plasma? : ${tracker.isReadyDonatePlasma}</p>
+    <p>  Not Donated Blood/Plasma in last 30 Days?: ${tracker.isNotDonatedForPast30Days}</p>
+    <p>  Blood Group: ${tracker.bloodGroup}</p>
 
 
-    <ul>
-      *  You understand that the provided information be used to share details with covid warriors looking for Blood/Plasma.
-        Provided Data will be deleted after 60 days of enrolment.
-    </ul>
+   <p>
+${Constant.CONSENT_MESSAGE}
+   </p>
     `;
 
     const alert = await this.alertCtrl.create({
