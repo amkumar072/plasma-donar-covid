@@ -118,6 +118,7 @@ export class TrackerAddEditPagePage implements OnInit {
 
       const tracker: Tracker = this.form.getRawValue();
       tracker.createdBy = this.currentUser;
+      tracker.createdDate = new Date();
 
       await this.presentAlertConfirm(tracker);
     } else {
