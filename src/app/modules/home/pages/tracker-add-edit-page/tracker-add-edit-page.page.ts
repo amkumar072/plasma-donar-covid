@@ -119,6 +119,7 @@ export class TrackerAddEditPagePage implements OnInit {
       const tracker: Tracker = this.form.getRawValue();
       tracker.firstName = tracker.firstName.toLowerCase();
       tracker.lastName = tracker.lastName.toLowerCase();
+      tracker.city = tracker.city.toLowerCase();
       tracker.createdBy = this.currentUser;
       tracker.createdDate = new Date();
 
